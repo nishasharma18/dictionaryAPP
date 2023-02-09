@@ -1,0 +1,36 @@
+<template>
+    <lightning-card icon-name="utility:display_text" title="Dictionary" class="dictionaryWrapper">
+        <lightning-layout vertical-align="end" >
+            <lightning-layout-item flexibility="grow">
+                <lightning-input id="word" onchange={handleWord}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-p-left_small">
+                <lightning-button label="Search" id="search" variant="brand" onclick={handleSearch}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        <p class="Info-Text">Type A Word And Hit Search Button To Get Meaning.</p>
+        <br/>
+        <ul>
+            <div class="Content">
+                <li class="Meaning">
+                    <div class="Details">
+                        <template if:true={meaningData}>
+                            <p><b>Meaning</b></p>
+                        </template>
+                        <div class="elementHoldingHTMLContent" lwc:dom="manual">
+                        </div>
+                    </div>
+                </li>
+                <template if:true={meaningData}>
+                    <li class="Synonyms">
+                        <div class="Details">
+                            <p>Audio</p>
+                            <div class="List audioDiv" id="audioDiv" lwc:dom="manual"></div>
+                        </div>
+                    </li>
+                </template>
+            </div>
+        </ul>
+    </lightning-card>
+</template>
